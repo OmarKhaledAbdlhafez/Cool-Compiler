@@ -1,7 +1,7 @@
 # Cool compiler 
  An implementation of the "Classroom Object-Oriented Language" compiler for compiler course in shoubra faculty of engineering  
 The files in this directory can get pretty messy, so here is a basic tour:
-# Cool Lexicer
+# Cool Lexer
 
 This directory contains the classes and code for Lexical Analyzer phase 
 # Requirement 
