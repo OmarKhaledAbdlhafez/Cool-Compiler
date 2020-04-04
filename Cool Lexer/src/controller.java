@@ -20,7 +20,7 @@ public class controller {
     public static void main(String[] args) throws IOException{
         //to test with cmd
         if(args.length >= 1){
-            controller lexicalObj = new controller(args[0]+"-lex");
+            controller lexicalObj = new controller(args[0]);
         }
         else{
             System.out.println("Please input the name of the file!");
@@ -41,7 +41,7 @@ public class controller {
         tokensStream = new CommonTokenStream(lexer);
         tokensStream.fill();
         tokens = tokensStream.getTokens();
-        startLexing(fileName);
+        startLexing(fileName+"-lex");
     }
 
     public void startLexing(String fileName){
