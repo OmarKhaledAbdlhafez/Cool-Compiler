@@ -6,7 +6,7 @@ The files in this directory can get pretty messy, so here is a basic tour:
 This directory contains the classes and code for Lexical Analyzer phase 
 # Requirement 
 
- - The lexer  use ANTLRv4. Please follow the quickstart guide [here]([https://www.antlr.org/](https://www.antlr.org/)).
+ - The lexer  use ANTLRv4. Please follow the quickstart guide [here]([https://www.antlr.org/]).
  - All of the code uses JAVA.
 
 ## How to use 
