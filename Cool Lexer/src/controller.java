@@ -18,14 +18,15 @@ public class controller {
     private List<Token> outTokens;
 
     public static void main(String[] args) throws IOException{
-        /*
+        //to test with cmd
         if(args.length >= 1){
             controller lexicalObj = new controller(args[0]);
         }
         else{
             System.out.println("Please input the name of the file!");
-        }*/
-        controller lexicalObj = new controller("bad.cl");
+        }
+        //to test within the ide
+        //controller lexicalObj = new controller("bad.cl");
     }
 
     public controller(String fileName) {
