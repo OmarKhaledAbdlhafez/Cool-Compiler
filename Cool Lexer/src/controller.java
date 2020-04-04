@@ -20,7 +20,7 @@ public class controller {
     public static void main(String[] args) throws IOException{
         //to test with cmd
         if(args.length >= 1){
-            controller lexicalObj = new controller(args[0]);
+            controller lexicalObj = new controller(args[0]+"-lex");
         }
         else{
             System.out.println("Please input the name of the file!");
@@ -79,7 +79,7 @@ public class controller {
 
     public void writetokens(String outFile){
         try {
-            BufferedWriter writer = new BufferedWriter(new FileWriter(outFile+"-lex"));
+            BufferedWriter writer = new BufferedWriter(new FileWriter(outFile));
             String[] ruleNames = lexer.getRuleNames();
             for (Token token : outTokens) {
                 int tokenTypeNUM = token.getType()-1;
