@@ -25,7 +25,7 @@ This directory contains the classes and code for Lexical Analyzer phase
 -   Second we Created controller.java that will test the cool input using tokens and generated files
 -   pass test case as an argument to main 
 
-output file called 'file name ' generated in the folder of the project
+output file called 'file name-lex ' generated in the folder of the project
 
 
 
