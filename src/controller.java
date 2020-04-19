@@ -2,6 +2,7 @@ import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.Token;
+import org.antlr.v4.runtime.tree.ParseTree;
 //import org.antlr.*;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -11,12 +12,12 @@ import java.util.List;
 
 
 public class controller {
-    private CoolLexer lexer;
+    private CoolRulesLexer lexer;
     private CommonTokenStream tokensStream;
     private List<Token> tokens;
     private List<Token> outErrors;
     private List<Token> outTokens;
-    private CoolRulesParser parser;
+    CoolRulesParser parser;
 
     public static void main(String[] args) throws IOException{
         //to test with cmd
@@ -31,6 +32,11 @@ public class controller {
     }
 
     public controller(String fileName) {
+        startLexing(fileName);
+        startParsing(fileName);
+    }
+
+    public void startLexing(String fileName){
         CharStream charStream;
         try{
             charStream = CharStreams.fromFileName(fileName);
@@ -38,15 +44,10 @@ public class controller {
             throw new RuntimeException(e);
         }
 
-        lexer = new CoolLexer(charStream);
+        lexer = new CoolRulesLexer(charStream);
         tokensStream = new CommonTokenStream(lexer);
         tokensStream.fill();
         tokens = tokensStream.getTokens();
-        startLexing(fileName+"-lex");
-        startParsing(fileName+"-cst");
-    }
-
-    public void startLexing(String fileName){
         outTokens = new ArrayList();
         outErrors = new ArrayList();
         String[] ruleNames = lexer.getRuleNames();
@@ -65,8 +66,18 @@ public class controller {
             printErrors();
         }
         else{
-            writetokens(fileName);
+            writetokens(fileName+"-lex");
         }
+    }
+
+    public void startParsing(String fileName) {
+        parser = new CoolRulesParser(tokensStream);
+        parser.removeErrorListeners();
+        parser.addErrorListener(new ParseErrorListener());
+        ParseTree pr = parser.program();
+        String parsTree = pr.toStringTree(parser);
+        System.out.println(parsTree);
+        writeParseTree(fileName+"-cst", parsTree);
     }
 
     public void printErrors(){
@@ -98,27 +109,14 @@ public class controller {
             throw new RuntimeException(e);
         }
     }
-
-    public void startParsing(String fileName) {
-        parser = new CoolRulesParser(tokensStream);
-        printCST(fileName);
-    }
-
-    public String getCST() {
-        CoolRulesParser.ProgramContext programContext = parser.program();
-        String cst = programContext.toStringTree(parser);
-        return cst;
-    }
-
-    public void printCST(String outFile) {
-        String cst = getCST();
+    public void writeParseTree(String outFile, String outString){
         try {
             BufferedWriter writer = new BufferedWriter(new FileWriter(outFile));
-            writer.write(cst);
+            writer.write(outString);
             writer.close();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
         }
-
+        catch (IOException ex) {
+            throw new RuntimeException(ex);
+        }
     }
 }
