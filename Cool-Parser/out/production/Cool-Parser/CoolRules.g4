@@ -1,6 +1,6 @@
 grammar CoolRules;
 import CoolLexer;
-
+ 
 program: (classDefinition)+EOF;
 
 classDefinition: CLASS TYPE (INHERITS TYPE)? LBRACE body RBRACE SEMICOLON;
