@@ -4,6 +4,10 @@ The files in this directory can get pretty messy, so here is a basic tour:
 # Cool Lexer
  
 This directory contains the classes and code for Lexical Analyzer phase. 
+
+# Cool Parser
+ 
+This directory contains the classes and code for Parese Tree phase. 
 # Requirements 
 
  1. Install intelliJ IDEA.
