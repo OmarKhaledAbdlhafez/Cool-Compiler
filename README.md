@@ -26,7 +26,7 @@ This directory contains the classes and code for Parese Tree phase.
 -   If there are no errors, the program will output a sequence of tokens in a file called good.cl-lex, otherwise it will report errors with their line numbers.
 
 
-# **Phase 1 : Parse Tree**
+# **Phase 2 : Parse Tree**
 
 -   First, create the Token file which contains all the tokens we want to compile and its possible values.
 -   create the grammer file and import the token file in it and put all the cool relues  
