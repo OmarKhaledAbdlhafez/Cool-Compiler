@@ -108,7 +108,51 @@ public coolvisitor extends CoolRulesBaseVisitor {
     }
 
 
-    @Override public T visitExpr(CoolRulesParser.ExprContext ctx) {
+    @Override public Object visitExpr(CoolRulesParser.ExprContext ctx) {
+         String temp = "";
+        Object left = visit(ctx.stmt(0));
+        Object right = visit(ctx.stmt(1));
+        switch(ctx.getChild(1).getText()){
+            case "+":
+                temp = left +" + " + right ;
+                System.out.println("t" + tcnt +" = " + temp + ";" );
+                tcnt++;
+                break;
+            case "-":
+                temp = left + " - " + right;
+                System.out.println("t" + tcnt +" = " + temp + ";" );
+                tcnt++;
+                break;
+            case "*":
+                temp = left + " * " + right;
+                System.out.println("t" + tcnt +" = " + temp + ";" );
+                tcnt++;
+                break;
+            case "/" :
+                temp = left + " / " + right;
+                System.out.println("t" + tcnt +" = " + temp + ";" );
+                tcnt++;
+                break;
+            case "<":
+                temp = left + " < " +right;
+                System.out.println("t" + tcnt +" = " + temp + ";" );
+                tcnt++;
+                break;
+            case "<=":
+                temp = left + " <= " +right;
+                System.out.println("t" + tcnt +" = " + temp + ";" );
+                tcnt++;
+                break;
+            case "=":
+                temp = left + " == " +right;
+                System.out.println("t" + tcnt +" = " + temp + ";" );
+                tcnt++;
+                break;
+            default:
+                System.out.println("not valid operation ");
+
+        }
+        return "";
 
     }
 
