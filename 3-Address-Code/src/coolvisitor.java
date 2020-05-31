@@ -2,6 +2,7 @@
 
 public class coolvisitor extends CoolRulesBaseVisitor {
 
+    int tcnt = 0, lcnt = 0;
 
     @Override public Object visitProgram(CoolRulesParser.ProgramContext ctx) {
         System.out.println("");
@@ -83,6 +84,13 @@ public class coolvisitor extends CoolRulesBaseVisitor {
 
 
     @Override public Object visitWhile(CoolRulesParser.WhileContext ctx) {
+        System.out.println("t"+tcnt+" = "+visit(ctx.stmt(0))+";");
+        tcnt++;
+        System.out.println("while t"+(tcnt-1)+"goto L"+lcnt+";");
+        lcnt++;
+        System.out.println("goto L"+lcnt+";");
+        System.out.println("L"+(lcnt-1)+":");
+        System.out.println(visit(ctx.stmt(1)));
         return "";
     }
 
@@ -124,6 +132,49 @@ public class coolvisitor extends CoolRulesBaseVisitor {
 
 
     @Override public Object visitExpr(CoolRulesParser.ExprContext ctx) {
+         String temp = "";
+        Object left = visit(ctx.stmt(0));
+        Object right = visit(ctx.stmt(1));
+        switch(ctx.getChild(1).getText()){
+            case "+":
+                temp = left +" + " + right ;
+                System.out.println("t" + tcnt +" = " + temp + ";" );
+                tcnt++;
+                break;
+            case "-":
+                temp = left + " - " + right;
+                System.out.println("t" + tcnt +" = " + temp + ";" );
+                tcnt++;
+                break;
+            case "*":
+                temp = left + " * " + right;
+                System.out.println("t" + tcnt +" = " + temp + ";" );
+                tcnt++;
+                break;
+            case "/" :
+                temp = left + " / " + right;
+                System.out.println("t" + tcnt +" = " + temp + ";" );
+                tcnt++;
+                break;
+            case "<":
+                temp = left + " < " +right;
+                System.out.println("t" + tcnt +" = " + temp + ";" );
+                tcnt++;
+                break;
+            case "<=":
+                temp = left + " <= " +right;
+                System.out.println("t" + tcnt +" = " + temp + ";" );
+                tcnt++;
+                break;
+            case "=":
+                temp = left + " == " +right;
+                System.out.println("t" + tcnt +" = " + temp + ";" );
+                tcnt++;
+                break;
+            default:
+                System.out.println("not valid operation ");
+
+        }
         return "";
     }
 
@@ -139,7 +190,8 @@ public class coolvisitor extends CoolRulesBaseVisitor {
 
 
     @Override public Object visitAssign(CoolRulesParser.AssignContext ctx) {
-        return "";
+        System.out.println(ctx.IDENTIFIER()+" = " + visit(ctx.stmt())+";");
+        return"";
     }
 
 }
