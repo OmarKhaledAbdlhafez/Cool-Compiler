@@ -79,7 +79,7 @@ public class coolvisitor extends CoolRulesBaseVisitor {
 
 
     @Override public Object visitIsvoid(CoolRulesParser.IsvoidContext ctx) {
-        return "";
+        return super.visitIsvoid(ctx);
     }
 
 
