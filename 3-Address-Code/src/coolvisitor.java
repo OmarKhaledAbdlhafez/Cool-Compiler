@@ -1,120 +1,145 @@
-import org.antlr.v4.runtime.ParserRuleContext;
+//import org.antlr.v4.runtime.ParserRuleContext;
 
-public coolvisitor extends CoolRulesBaseVisitor {
+public class coolvisitor extends CoolRulesBaseVisitor {
 
-    int tcnt = 0, lcnt = 0;
 
-    @Override public T visitProgram(CoolRulesParser.ProgramContext ctx){
-
+    @Override public Object visitProgram(CoolRulesParser.ProgramContext ctx) {
+        System.out.println("");
+        for (var classs: ctx.children) {
+            visit(classs);
+        }
+        return "";
     }
 
-    @Override public T visitClassDefinition(CoolRulesParser.ClassDefinitionContext ctx) {
-
-    }
-
-
-    @Override public T visitBody(CoolRulesParser.BodyContext ctx) {
-
-    }
-
-
-    @Override public T visitAttr(CoolRulesParser.AttrContext ctx) {
-
+    @Override public Object visitClassDefinition(CoolRulesParser.ClassDefinitionContext ctx) {
+        String className = ctx.TYPE(0).getText();
+        System.out.println(className + ":");
+        visit(ctx.body());
+        return "";
     }
 
 
-    @Override public T visitMethod(CoolRulesParser.MethodContext ctx) {
-
+    @Override public Object visitBody(CoolRulesParser.BodyContext ctx) {
+        for (var child: ctx.children) {
+            visit(child);
+        }
+        return "";
     }
 
 
-    @Override public T visitParameter(CoolRulesParser.ParameterContext ctx) {
-
+    @Override public Object visitAttr(CoolRulesParser.AttrContext ctx) {
+        if(ctx.getChildCount() > 4) {
+            String className = ctx.TYPE().getText();
+            String attrName = ctx.IDENTIFIER().getText();
+            System.out.println("\t\t" + className + "." + attrName + " = " + visit(ctx.stmt()));
+        }
+        return "";
     }
 
 
-    @Override public T visitNew(CoolRulesParser.NewstmtContext ctx) {
-
+    @Override public Object visitMethod(CoolRulesParser.MethodContext ctx) {
+        String methodName = ctx.IDENTIFIER().getText();
+        System.out.println("\t" + methodName + ":");
+        System.out.println("\t\tBeginFunc;");
+        visit(ctx.stmt());
+        System.out.println("\t\tEndFunc;");
+        return "";
     }
 
 
-    @Override public T visitIdentifier(CoolRulesParser.IdentifierContext ctx) {
-
+    @Override public Object visitParameter(CoolRulesParser.ParameterContext ctx) {
+        System.out.println("\t\tPushParam " + ctx.IDENTIFIER().getText());
+        return "";
     }
 
 
-    @Override public T visitInvert(CoolRulesParser.InvertContext ctx) {
-
+    @Override public Object visitNew(CoolRulesParser.NewContext ctx) {
+        System.out.println("new " + ctx.TYPE().getText());
+        return "";
     }
 
 
-    @Override public T visitString(CoolRulesParser.StringContext ctx) {
-
+    @Override public Object visitIdentifier(CoolRulesParser.IdentifierContext ctx) {
+        System.out.println("\t\t" + ctx.IDENTIFIER().getText());
+        return "";
     }
 
 
-    @Override public T visitIsvoid(CoolRulesParser.IsvoidContext ctx) {
+    @Override public Object visitInvert(CoolRulesParser.InvertContext ctx) {
 
+        return "";
     }
 
 
-    @Override public T visitWhile(CoolRulesParser.WhileContext ctx) {
-
+    @Override public Object visitString(CoolRulesParser.StringContext ctx) {
+        System.out.println("\t\t" + ctx.STRING().getText());
+        return "";
     }
 
 
-    @Override public T visitTilde(CoolRulesParser.TildeContext ctx) {
-
+    @Override public Object visitIsvoid(CoolRulesParser.IsvoidContext ctx) {
+        return "";
     }
 
 
-    @Override public T visitInt(CoolRulesParser.IntContext ctx) {
-
+    @Override public Object visitWhile(CoolRulesParser.WhileContext ctx) {
+        return "";
     }
 
 
-    @Override public T visitMethodcall(CoolRulesParser.MethodcallContext ctx) {
-
+    @Override public Object visitTilde(CoolRulesParser.TildeContext ctx) {
+        return "";
     }
 
 
-    @Override public T visitStatem(CoolRulesParser.StatemContext ctx) {
-
+    @Override public Object visitInt(CoolRulesParser.IntContext ctx) {
+        System.out.println("\t\t" + ctx.INTEGER().getText());
+        return "";
     }
 
 
-    @Override public T visitCalling(CoolRulesParser.CallingContext ctx) {
-
+    @Override public Object visitMethodcall(CoolRulesParser.MethodcallContext ctx) {
+        return "";
     }
 
 
-    @Override public T visitBlock(CoolRulesParser.BlockContext ctx) {
-
+    @Override public Object visitStatem(CoolRulesParser.StatemContext ctx) {
+        return "";
     }
 
 
-    @Override public T visitLet(CoolRulesParser.LetContext ctx) {
-
+    @Override public Object visitCalling(CoolRulesParser.CallingContext ctx) {
+        return "";
     }
 
 
-    @Override public T visitExpr(CoolRulesParser.ExprContext ctx) {
-
+    @Override public Object visitBlock(CoolRulesParser.BlockContext ctx) {
+        return "";
     }
 
 
-    @Override public T visitIf(CoolRulesParser.IfContext ctx) {
-
+    @Override public Object visitLet(CoolRulesParser.LetContext ctx) {
+        return "";
     }
 
 
-    @Override public T visitCase(CoolRulesParser.CaseContext ctx) {
-
+    @Override public Object visitExpr(CoolRulesParser.ExprContext ctx) {
+        return "";
     }
 
 
-    @Override public T visitAssign(CoolRulesParser.AssignContext ctx) {
+    @Override public Object visitIf(CoolRulesParser.IfContext ctx) {
+        return "";
+    }
 
+
+    @Override public Object visitCase(CoolRulesParser.CaseContext ctx) {
+        return "";
+    }
+
+
+    @Override public Object visitAssign(CoolRulesParser.AssignContext ctx) {
+        return "";
     }
 
 }
