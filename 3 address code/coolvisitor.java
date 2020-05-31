@@ -1,5 +1,4 @@
 import org.antlr.v4.runtime.ParserRuleContext;
-import java.sql.SQLOutput;
 public  coolvisitor  extends CoolRulesBaseVisitor {
 @Override public Object visitProgram(CoolRulesParser.ProgramContext ctx) {
     return visitChildren(ctx);
