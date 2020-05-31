@@ -50,6 +50,7 @@ public coolvisitor extends CoolRulesBaseVisitor {
 
 
     @Override public T visitString(CoolRulesParser.StringContext ctx) {
+        return ctx.STRING ();
 
     }
 
@@ -59,8 +60,15 @@ public coolvisitor extends CoolRulesBaseVisitor {
     }
 
 
-    @Override public T visitWhile(CoolRulesParser.WhileContext ctx) {
-
+    @Override public Object visitWhile(CoolRulesParser.WhileContext ctx) {
+        System.out.println("t"+tcnt+" = "+visit(ctx.stmt(0))+";");
+        tcnt++;
+        System.out.println("while t"+(tcnt-1)+"goto L"+lcnt+";");
+        lcnt++;
+        System.out.println("goto L"+lcnt+";");
+        System.out.println("L"+(lcnt-1)+":");
+        System.out.println(visit(ctx.stmt(1)));    
+        return "";
     }
 
 
