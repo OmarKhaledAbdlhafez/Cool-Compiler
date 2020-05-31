@@ -38,7 +38,8 @@ public coolvisitor extends CoolRulesBaseVisitor {
     }
 
 
-    @Override public T visitIdentifier(CoolRulesParser.IdentifierContext ctx) {
+    @Override public Object visitIdentifier(CoolRulesParser.IdentifierContext ctx) {
+        return ctx.IDENTIFIER();
 
     }
 
@@ -68,7 +69,8 @@ public coolvisitor extends CoolRulesBaseVisitor {
     }
 
 
-    @Override public T visitInt(CoolRulesParser.IntContext ctx) {
+    @Override public Object visitInt(CoolRulesParser.IntContext ctx) {
+        return ctx.INTEGER()  ;
 
     }
 
@@ -113,7 +115,9 @@ public coolvisitor extends CoolRulesBaseVisitor {
     }
 
 
-    @Override public T visitAssign(CoolRulesParser.AssignContext ctx) {
+    @Override public Object visitAssign(CoolRulesParser.AssignContext ctx) {
+         System.out.println(ctx.IDENTIFIER()+" = " + visit(ctx.stmt())+";");
+        return"";
 
     }
 
