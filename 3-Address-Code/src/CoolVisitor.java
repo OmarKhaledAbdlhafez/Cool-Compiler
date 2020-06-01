@@ -1,7 +1,14 @@
+/**
+ * overrides some methods in the CoolRulesBaseVisitor class to output the 3-Adress-Code of a cool program
+ */
 public class CoolVisitor extends CoolRulesBaseVisitor {
-
     int t_cnt = 0, l_cnt = 0, r_cnt = 0;
 
+    /**
+     * responsible for visiting the whole program
+     * @param ctx the context of the program
+     * @return an empty string
+     */
     @Override public Object visitProgram(CoolRulesParser.ProgramContext ctx) {
         System.out.println("");
         for(var classs: ctx.classDefinition()) {
@@ -10,6 +17,11 @@ public class CoolVisitor extends CoolRulesBaseVisitor {
         return "";
     }
 
+    /**
+     * responsible for visiting the class definition
+     * @param ctx the context of the class
+     * @return an empty string
+     */
     @Override public Object visitClassDefinition(CoolRulesParser.ClassDefinitionContext ctx) {
         String className = ctx.TYPE(0).getText();
         System.out.println(className + ":");
@@ -17,7 +29,11 @@ public class CoolVisitor extends CoolRulesBaseVisitor {
         return "";
     }
 
-
+    /**
+     * responsible for visiting the body of the class
+     * @param ctx the context of the body
+     * @return an empty string
+     */
     @Override public Object visitBody(CoolRulesParser.BodyContext ctx) {
         for (var child: ctx.children) {
             visit(child);
@@ -25,7 +41,11 @@ public class CoolVisitor extends CoolRulesBaseVisitor {
         return "";
     }
 
-
+    /**
+     * responsible for visiting an attribute
+     * @param ctx the context of the attribute
+     * @return an empty string
+     */
     @Override public Object visitAttr(CoolRulesParser.AttrContext ctx) {
         if(ctx.getChildCount() > 4) {
             String className = ctx.TYPE().getText();
@@ -35,7 +55,11 @@ public class CoolVisitor extends CoolRulesBaseVisitor {
         return "";
     }
 
-
+    /**
+     * responsible for visiting the class method
+     * @param ctx the context of the method
+     * @return an empty string
+     */
     @Override public Object visitMethod(CoolRulesParser.MethodContext ctx) {
         String methodName = ctx.IDENTIFIER().getText();
         System.out.println("\t" + methodName + ":");
@@ -45,37 +69,65 @@ public class CoolVisitor extends CoolRulesBaseVisitor {
         return "";
     }
 
-
+    /**
+     * responsible for visiting a parameter of a method
+     * @param ctx the context of the parameter
+     * @return the identifier of the parameter
+     */
     @Override public Object visitParameter(CoolRulesParser.ParameterContext ctx) {
         return ctx.IDENTIFIER();
     }
 
-
+    /**
+     * responsible for visiting a new object declaration
+     * @param ctx the context of the new object
+     * @return a string that represents the new object
+     */
     @Override public Object visitNew(CoolRulesParser.NewContext ctx) {
         return "new " + ctx.TYPE().getText();
     }
 
-
+    /**
+     * responsible for visiting an identifier
+     * @param ctx the context of the identifier
+     * @return the text of the identifier
+     */
     @Override public Object visitIdentifier(CoolRulesParser.IdentifierContext ctx) {
         return ctx.IDENTIFIER().getText();
     }
 
-
+    /**
+     * responsible for visiting a not statement
+     * @param ctx the context of the not statement
+     * @return a not statement representation
+     */
     @Override public Object visitNot(CoolRulesParser.NotContext ctx) {
         return "! " + visit(ctx.stmt());
     }
 
-
+    /**
+     * responsible for visiting a string statement
+     * @param ctx the context of the string statement
+     * @return the text of the string
+     */
     @Override public Object visitString(CoolRulesParser.StringContext ctx) {
         return ctx.STRING().getText();
     }
 
-
+    /**
+     * responsible for visiting the Isvoid statement
+     * @param ctx the context of the Isvoid statement
+     * @return a representation of the Isvoid statement
+     */
     @Override public Object visitIsvoid(CoolRulesParser.IsvoidContext ctx) {
         return "isvoid " + ctx.stmt();
     }
 
-
+    /**
+     * responsible for visiting a while statement
+     * @param ctx the context of a wile statement
+     * @return an empty string
+     */
     @Override public Object visitWhile(CoolRulesParser.WhileContext ctx) {
         String startLabel = "L" + l_cnt++;
         System.out.println("\t" + startLabel + ":");
@@ -88,17 +140,29 @@ public class CoolVisitor extends CoolRulesBaseVisitor {
         return "";
     }
 
-
+    /**
+     * responsible for visiting the tide statement
+     * @param ctx the context of the tilde statement
+     * @return a representation string of a tilde string
+     */
     @Override public Object visitTilde(CoolRulesParser.TildeContext ctx) {
         return "~ " + visit(ctx.stmt());
     }
 
-
+    /**
+     * responsible for visiting an integer
+     * @param ctx the context of the integer
+     * @return the text of the integer
+     */
     @Override public Object visitInt(CoolRulesParser.IntContext ctx) {
         return ctx.INTEGER().getText();
     }
 
-
+    /**
+     * responsible for visitingg the method call statement
+     * @param ctx the context of the method call statement
+     * @return a representation of the method call statement
+     */
     @Override public Object visitMethodCall(CoolRulesParser.MethodCallContext ctx) {
         for(var st: ctx.stmt()) {
             String paramValue = visit(st).toString();
@@ -111,17 +175,30 @@ public class CoolVisitor extends CoolRulesBaseVisitor {
         return "r" + r_cnt++;
     }
 
-
+    /**
+     * responsible for visiting a statement between two parenthesis "(statement)"
+     * @param ctx the context of the statement
+     * @return the statement that is between the two parenthesis
+     */
     @Override public Object visitParenStmt(CoolRulesParser.ParenStmtContext ctx) {
         return visit(ctx.stmt());
     }
 
-
+    /**
+     * NOT FINSHED, NEEDS IMPLEMENTATION
+     * responsible for visiting a call of an object method
+     * @param ctx the context of a call of an object method
+     * @return an empty string
+     */
     @Override public Object visitCalling(CoolRulesParser.CallingContext ctx) {
         return "";
     }
 
-
+    /**
+     * responsible for visiting a block of statements
+     * @param ctx the context of the block
+     * @return an empty string
+     */
     @Override public Object visitBlock(CoolRulesParser.BlockContext ctx) {
         for(var st: ctx.stmt()){
             visit(st);
@@ -129,7 +206,11 @@ public class CoolVisitor extends CoolRulesBaseVisitor {
         return "";
     }
 
-
+    /**
+     * responsible for visiting the Let statement
+     * @param ctx the context of the Let statement
+     * @return an empty string
+     */
     @Override public Object visitLet(CoolRulesParser.LetContext ctx) {
         int sz= ctx.stmt().size() - 1;
         //System.out.println(sz);
@@ -142,7 +223,11 @@ public class CoolVisitor extends CoolRulesBaseVisitor {
         return "";
     }
 
-
+    /**
+     * responsible for visiting an expression (addition, subtraction, multiplication ..etc)
+     * @param ctx the context of the expression
+     * @return a representation of the expression
+     */
     @Override public Object visitExpr(CoolRulesParser.ExprContext ctx) {
         String temp = "";
         Object left = visit(ctx.stmt(0));
@@ -183,7 +268,11 @@ public class CoolVisitor extends CoolRulesBaseVisitor {
         return "t" + (t_cnt - 1);
     }
 
-
+    /**
+     * responsible for visiting an if statement
+     * @param ctx the context of the if statement
+     * @return an empty string
+     */
     @Override public Object visitIf(CoolRulesParser.IfContext ctx) {
         String condition = visit(ctx.stmt(0)).toString();
         String falseLabel = "L" + l_cnt++;
@@ -203,7 +292,11 @@ public class CoolVisitor extends CoolRulesBaseVisitor {
         return "";
     }
 
-
+    /**
+     * responsible for visiting a Case statement
+     * @param ctx the context of the case statement
+     * @return an empty string
+     */
     @Override public Object visitCase(CoolRulesParser.CaseContext ctx) {
         String val = "t" + t_cnt++;
         System.out.println("\t\t" + val + " = " + visit(ctx.stmt(0)).toString() + ";");
@@ -224,7 +317,11 @@ public class CoolVisitor extends CoolRulesBaseVisitor {
         return "";
     }
 
-
+    /**
+     * responsible for visiting an Assign statement
+     * @param ctx the context of the Assign statement
+     * @return an empty string
+     */
     @Override public Object visitAssign(CoolRulesParser.AssignContext ctx) {
         System.out.println("\t\t" + ctx.IDENTIFIER() + " = " + visit(ctx.stmt()) + ";");
         return"";
