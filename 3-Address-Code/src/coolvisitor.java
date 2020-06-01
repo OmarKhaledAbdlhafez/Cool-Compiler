@@ -2,7 +2,7 @@
 
 import javax.swing.*;
 
-public class coolvisitor extends CoolRulesBaseVisitor {
+public class CoolVisitor extends CoolRulesBaseVisitor {
 
     int t_cnt = 0, l_cnt = 0, r_cnt = 0;
 

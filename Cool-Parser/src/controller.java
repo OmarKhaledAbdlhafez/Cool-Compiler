@@ -30,7 +30,7 @@ public class controller {
             System.out.println("Please input the name of the file!");
         }*/
         //to test within the ide
-        controller lexicalObj = new controller("bad.cl");
+        controller lexicalObj = new controller("good.cl");
     }
 
     /**

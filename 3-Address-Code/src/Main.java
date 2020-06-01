@@ -19,7 +19,7 @@ public class Main {
 
         ParseTree tree = parser.program();
 
-        coolvisitor visitor = new coolvisitor();
+        CoolVisitor visitor = new CoolVisitor();
         visitor.visit(tree);
     }
 }

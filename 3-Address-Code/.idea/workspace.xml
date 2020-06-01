@@ -2,24 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0a7915e3-21ad-47f0-a8cd-cddd4cef0b99" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/3-Address-Code.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sbt.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gen/CoolRules.interp" beforeDir="false" afterPath="$PROJECT_DIR$/gen/CoolRules.interp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gen/CoolRules.tokens" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gen/CoolRulesBaseListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/gen/CoolRulesBaseListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gen/CoolRulesBaseVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/gen/CoolRulesBaseVisitor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gen/CoolRulesLexer.interp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gen/CoolRulesLexer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gen/CoolRulesLexer.tokens" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gen/CoolRulesListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/gen/CoolRulesListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gen/CoolRulesParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/gen/CoolRulesParser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gen/CoolRulesVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/gen/CoolRulesVisitor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CoolLexer.g4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CoolRules.g4" beforeDir="false" afterPath="$PROJECT_DIR$/src/CoolRules.g4" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/coolvisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/coolvisitor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Cool-Parser/bad.cl-lex" beforeDir="false" afterPath="$PROJECT_DIR$/../Cool-Parser/bad.cl-lex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Cool-Parser/good.cl-lex" beforeDir="false" afterPath="$PROJECT_DIR$/../Cool-Parser/good.cl-lex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Cool-Parser/out/production/Cool-Parser/controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Cool-Parser/out/production/Cool-Parser/controller.class" afterDir="false" />
@@ -121,7 +103,7 @@
       <updated>1590955639654</updated>
       <workItem from="1590955648473" duration="3279000" />
       <workItem from="1590961081858" duration="26272000" />
-      <workItem from="1590991331621" duration="52000" />
+      <workItem from="1590991331621" duration="464000" />
     </task>
     <servers />
   </component>
