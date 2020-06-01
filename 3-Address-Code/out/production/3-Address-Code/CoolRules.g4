@@ -12,12 +12,12 @@ method: IDENTIFIER LPAREN (parameter (COMMA parameter)* )? RPAREN COLON TYPE LBR
 parameter: IDENTIFIER COLON TYPE;
 
 stmt:stmt(AT TYPE)?DOT IDENTIFIER LPAREN(stmt (COMMA stmt)*)? RPAREN    # calling
-    |IDENTIFIER LPAREN (stmt (COMMA stmt)*)?  RPAREN                    # methodcall
+    |IDENTIFIER LPAREN (stmt (COMMA stmt)*)?  RPAREN                    # methodCall
     |IF stmt THEN  stmt (ELSE stmt)? FI                                 # if
     |WHILE stmt LOOP stmt POOL                                          # while
     |LBRACE (stmt SEMICOLON)+ RBRACE                                    # block
-    |LET (IDENTIFIER COLON TYPE (LARROW stmt)?)+ IN stmt                # let
-    | CASE stmt OF (IDENTIFIER COLON TYPE '=>' stmt SEMICOLON)+ ESAC    # case
+    |LET (IDENTIFIER COLON TYPE (LARROW stmt)? COMMA?)+ IN stmt         # let
+    |CASE stmt OF (IDENTIFIER COLON TYPE '=>' stmt SEMICOLON)+ ESAC     # case
     |NEW TYPE                                                           # new
     |ISVOID stmt                                                        # isvoid
     |TILDE stmt                                                         # tilde
@@ -28,8 +28,8 @@ stmt:stmt(AT TYPE)?DOT IDENTIFIER LPAREN(stmt (COMMA stmt)*)? RPAREN    # callin
     |stmt LT stmt                                                       # expr
     |stmt LE stmt                                                       # expr
     |stmt EQUALS stmt                                                   # expr
-    |NOT stmt                                                           # invert
-    |LPAREN stmt RPAREN                                                 # statem
+    |NOT stmt                                                           # not
+    |LPAREN stmt RPAREN                                                 # parenStmt
     |IDENTIFIER                                                         # identifier
     |INTEGER                                                            # int
     |STRING                                                             # string

@@ -111,18 +111,6 @@ public class CoolRulesBaseListener implements CoolRulesListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterInvert(CoolRulesParser.InvertContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitInvert(CoolRulesParser.InvertContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
 	@Override public void enterString(CoolRulesParser.StringContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -130,6 +118,18 @@ public class CoolRulesBaseListener implements CoolRulesListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitString(CoolRulesParser.StringContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterParenStmt(CoolRulesParser.ParenStmtContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitParenStmt(CoolRulesParser.ParenStmtContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -183,25 +183,13 @@ public class CoolRulesBaseListener implements CoolRulesListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterMethodcall(CoolRulesParser.MethodcallContext ctx) { }
+	@Override public void enterNot(CoolRulesParser.NotContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitMethodcall(CoolRulesParser.MethodcallContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterStatem(CoolRulesParser.StatemContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitStatem(CoolRulesParser.StatemContext ctx) { }
+	@Override public void exitNot(CoolRulesParser.NotContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -274,6 +262,18 @@ public class CoolRulesBaseListener implements CoolRulesListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitCase(CoolRulesParser.CaseContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterMethodCall(CoolRulesParser.MethodCallContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitMethodCall(CoolRulesParser.MethodCallContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

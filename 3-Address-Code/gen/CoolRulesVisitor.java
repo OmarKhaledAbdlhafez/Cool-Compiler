@@ -60,19 +60,19 @@ public interface CoolRulesVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitIdentifier(CoolRulesParser.IdentifierContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code invert}
-	 * labeled alternative in {@link CoolRulesParser#stmt}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitInvert(CoolRulesParser.InvertContext ctx);
-	/**
 	 * Visit a parse tree produced by the {@code string}
 	 * labeled alternative in {@link CoolRulesParser#stmt}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitString(CoolRulesParser.StringContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code parenStmt}
+	 * labeled alternative in {@link CoolRulesParser#stmt}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitParenStmt(CoolRulesParser.ParenStmtContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code isvoid}
 	 * labeled alternative in {@link CoolRulesParser#stmt}.
@@ -102,19 +102,12 @@ public interface CoolRulesVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitInt(CoolRulesParser.IntContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code methodcall}
+	 * Visit a parse tree produced by the {@code not}
 	 * labeled alternative in {@link CoolRulesParser#stmt}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitMethodcall(CoolRulesParser.MethodcallContext ctx);
-	/**
-	 * Visit a parse tree produced by the {@code statem}
-	 * labeled alternative in {@link CoolRulesParser#stmt}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitStatem(CoolRulesParser.StatemContext ctx);
+	T visitNot(CoolRulesParser.NotContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code calling}
 	 * labeled alternative in {@link CoolRulesParser#stmt}.
@@ -157,6 +150,13 @@ public interface CoolRulesVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitCase(CoolRulesParser.CaseContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code methodCall}
+	 * labeled alternative in {@link CoolRulesParser#stmt}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitMethodCall(CoolRulesParser.MethodCallContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code assign}
 	 * labeled alternative in {@link CoolRulesParser#stmt}.

@@ -91,18 +91,6 @@ public interface CoolRulesListener extends ParseTreeListener {
 	 */
 	void exitIdentifier(CoolRulesParser.IdentifierContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code invert}
-	 * labeled alternative in {@link CoolRulesParser#stmt}.
-	 * @param ctx the parse tree
-	 */
-	void enterInvert(CoolRulesParser.InvertContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code invert}
-	 * labeled alternative in {@link CoolRulesParser#stmt}.
-	 * @param ctx the parse tree
-	 */
-	void exitInvert(CoolRulesParser.InvertContext ctx);
-	/**
 	 * Enter a parse tree produced by the {@code string}
 	 * labeled alternative in {@link CoolRulesParser#stmt}.
 	 * @param ctx the parse tree
@@ -114,6 +102,18 @@ public interface CoolRulesListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitString(CoolRulesParser.StringContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code parenStmt}
+	 * labeled alternative in {@link CoolRulesParser#stmt}.
+	 * @param ctx the parse tree
+	 */
+	void enterParenStmt(CoolRulesParser.ParenStmtContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code parenStmt}
+	 * labeled alternative in {@link CoolRulesParser#stmt}.
+	 * @param ctx the parse tree
+	 */
+	void exitParenStmt(CoolRulesParser.ParenStmtContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code isvoid}
 	 * labeled alternative in {@link CoolRulesParser#stmt}.
@@ -163,29 +163,17 @@ public interface CoolRulesListener extends ParseTreeListener {
 	 */
 	void exitInt(CoolRulesParser.IntContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code methodcall}
+	 * Enter a parse tree produced by the {@code not}
 	 * labeled alternative in {@link CoolRulesParser#stmt}.
 	 * @param ctx the parse tree
 	 */
-	void enterMethodcall(CoolRulesParser.MethodcallContext ctx);
+	void enterNot(CoolRulesParser.NotContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code methodcall}
+	 * Exit a parse tree produced by the {@code not}
 	 * labeled alternative in {@link CoolRulesParser#stmt}.
 	 * @param ctx the parse tree
 	 */
-	void exitMethodcall(CoolRulesParser.MethodcallContext ctx);
-	/**
-	 * Enter a parse tree produced by the {@code statem}
-	 * labeled alternative in {@link CoolRulesParser#stmt}.
-	 * @param ctx the parse tree
-	 */
-	void enterStatem(CoolRulesParser.StatemContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code statem}
-	 * labeled alternative in {@link CoolRulesParser#stmt}.
-	 * @param ctx the parse tree
-	 */
-	void exitStatem(CoolRulesParser.StatemContext ctx);
+	void exitNot(CoolRulesParser.NotContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code calling}
 	 * labeled alternative in {@link CoolRulesParser#stmt}.
@@ -258,6 +246,18 @@ public interface CoolRulesListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitCase(CoolRulesParser.CaseContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code methodCall}
+	 * labeled alternative in {@link CoolRulesParser#stmt}.
+	 * @param ctx the parse tree
+	 */
+	void enterMethodCall(CoolRulesParser.MethodCallContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code methodCall}
+	 * labeled alternative in {@link CoolRulesParser#stmt}.
+	 * @param ctx the parse tree
+	 */
+	void exitMethodCall(CoolRulesParser.MethodCallContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code assign}
 	 * labeled alternative in {@link CoolRulesParser#stmt}.
